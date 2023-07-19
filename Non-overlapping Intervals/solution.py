@@ -4,7 +4,7 @@ class Solution:
 
         intervals.sort(key=lambda interval : interval[1])
 
-        for _ in range(100001):
+        for _ in range(intervals[-1][1]+50001):
             dp.append(0)
 
         dp[intervals[0][1]+50000]= 1
@@ -26,7 +26,4 @@ class Solution:
         if dp[temp-1]>dp[temp]:
             dp[temp]= dp[temp-1]
 
-        for i in range(temp+1, 100001):
-            dp[i]= dp[i-1]
-
-        return len(intervals)-dp[100000]
+        return len(intervals)-dp[temp]
